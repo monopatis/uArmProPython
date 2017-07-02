@@ -14,7 +14,6 @@ GET_HARDWARE_VERSION    = "P2202"
 SET_ANGLE               = "G2202 N{} V{}"
 SET_MODE                = "M2400 S{}"
 
-# SET_RAW_ANGLE           = "sSerN{}V{}"
 STOP_MOVING             = "G2203"
 SET_PUMP                = "M2231 V{}"
 GET_PUMP                = "P2231"
@@ -24,7 +23,7 @@ ATTACH_SERVO            = "M2201 N{}"
 DETACH_SERVO            = "M2202 N{}"
 GET_COOR                = "P2220"
 GET_ANGLE               = "P2200"
-# GET_RAW_ANGLE           = "gSer"
+
 GET_IS_MOVE             = "M2200"
 GET_TIP_SENSOR          = "P2233"
 SET_BUZZER              = "M2210 F{} T{}"
@@ -34,5 +33,3 @@ GET_EEPROM              = "M2211 N0 A{} T{}"
 SET_EEPROM              = "M2212 N0 A{} T{} V{}"
 GET_ANALOG              = "P2241 N{}"
 GET_DIGITAL             = "P2240 N{}"
-
-
