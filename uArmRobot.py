@@ -20,7 +20,7 @@ class robot:
     debug = False
     baseThreadCount = threading.activeCount()
     delay_after_move = 0.1
-    
+
     def __init__(self, serialport):
         self.serialport = serialport
         self.connected = False
@@ -33,7 +33,7 @@ class robot:
             if (self.debug): print ("trying to connect to: " + self.serialport)
             self.ser = serial.Serial(self.serialport, 115200, timeout=1)
             time.sleep(self.connect_timeout)
-            
+
             Ready = False
             while (not Ready):
                 line = self.ser.readline()
@@ -45,7 +45,7 @@ class robot:
                     return True
             line = self.ser.readline() # Ignore if @6 response is given
             print (line)
-                        
+
         except Exception as e:
             if (self.debug): print ("Error trying to connect to: " + self.serialport + " - " + str(e))
             self.connected = False
@@ -90,6 +90,28 @@ class robot:
         cmd = protocol.SET_POSITION.format(x,y,z,s)
         self.sendcmd(cmd, True)
 
+    def set_angle(self,n,r):
+            self.moving = True
+            n = str(int(n))
+            r = str(round(r, 2))
+            cmd = protocol.SET_ANGLE.format(n,r)
+            self.sendcmd(cmd, True)
+
+    def get_angle(self,n):
+            n = str(int(n))
+            cmd = protocol.GET_ANGLE_OF_JOINT.format(n)
+            self.sendcmd(cmd, True)
+
+
+    def move(self,x,y,z,speed):
+        self.moving = True
+        x = str(round(x, 2))
+        y = str(round(y, 2))
+        z = str(round(z, 2))
+        s = str(round(speed, 2))
+        cmd = protocol.SET_POSITION_RELATIVE.format(x,y,z,s)
+        self.sendcmd(cmd, True)
+
     def async_goto(self,x,y,z, speed):
         self.moving = True
         t = threading.Thread( target=self.goto , args=(x,y,z,speed) )
@@ -120,7 +142,7 @@ class robot:
             return
         if (self.debug): print ("Drwaing circle of {} radius in {} steps".format(Radius,Resolution))
         offsetx = centerX
-        offsety = centerY 
+        offsety = centerY
         c = self.PointsInCircum(Radius,Resolution)
         bx,by = c[0]
         self.goto(offsetx+bx,offsety+by,StartFinishedHeight,Speed)
@@ -132,30 +154,3 @@ class robot:
         self.goto(offsetx+bx,offsety+by,DrawingHeight,Speed)
         time.sleep(0.5)
         self.goto(offsetx+bx,offsety+by,StartFinishedHeight,Speed)
-
-        
-        
-            
-
-            
-        
-
-        
-
-        
-
-
-
-        
-
-        
-            
-            
-        
-
-
-
-
-
-
-
