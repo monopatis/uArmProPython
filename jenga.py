@@ -1,6 +1,6 @@
-# uArm Swift Pro - Python Library Example
-# Created by: Richard Garsthagen - the.anykey@gmail.com
-# V0.1 - June 2017 - Still under development
+# uArm Swift Pro - Jenga builting
+# Created by: Monopatis Dimitrios - monopatis+git@gmail.com
+# V0.1 - July 2017 - Still under development
 
 import uArmRobot
 import time
