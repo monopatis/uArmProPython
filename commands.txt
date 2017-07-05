@@ -1,0 +1,182 @@
+#n G2204 X0 Y0 Z-10 F1000
+#n M2203 N0
+#n G0 X100 Y100 Z100 F1000
+#n G0 X278.5 Y113.7 Z20 F6000
+#n G2202 N3 V68
+4ο μοτερ 68 μοίρες (0-179)
+#n G2204 X0 Y0 Z-35 F2000
+#n M2232 V1
+#n G2204 X0 Y0 Z80 F4000
+35mm το καθε τετράγωνο επι 4
+#n G2204 X-140 Y0 Z0 F4000
+#n G2204 X0 Y0 Z-80 F4000
+#n M2232 V0
+#n G0 X100 Y100 Z100 F1000\n
+#n M2019 \n Detach all the joint motors $n OK \n
+
+G0 X101.18 Y2.79 Z40.14
+jenga
+M17 attach all
+G0 X200 Y0 Z100 F6000 pano
+G0 X101.18 Y0 Z40.14 F6000 θεση αναπαυσης
+M2019 detach all
+M2120 V0.2 προβολη θεσης
+M2120 V0 στοπ προβολης
+M17
+G0 X200 Y0 Z100 F6000
+G2202 N3 V90 4ο join
+G2202 N3 V58
+G0 X300 Y100 Z100 F6000
+G2204 X0 Y0 Z-27 F1000
+M2231 V1 pump on
+G2204 X0 Y0 Z27 F1000
+G0 X200 Y0 Z100 F6000
+G0 X145.69 Y0 Z10.69 F6000
+M2231 V0
+//G2204 X0 Y0 Z10 F1000
+//δευτερο
+G0 X200 Y0 Z100 F6000
+G0 Χ300 Y0 Z100 F6000
+G2204 X0 Y0 Z-27 F1000
+M2231 V1 pump on
+G0 Χ300 Y0 Z100 F6000
+G0 X200 Y0 Z100 F6000
+(+27mm)
+G0 X172.69 Y0 Z10.69 F6000
+M2231 V0
+
+
+G2202 N3 V148
+i-27 Y-23.57 Z+15,09
+G0 X172.69 Y-23.57 Z25.78
+//
+Move to XYZ(mm), F is speed(mm/min) $n OK \n or $n Ex \n (refer to Err output)
+#n G1 X100 Y100 Z100 F1000
+After entering the laser mode $n OK \n or $n Ex \n (refer to Err
+(M2400 S1), command G1 output) means laser on, G0 means off.
+#n G2201 S100 R90 H80 F1000\n Polar coordinates, S is
+stretch(mm), R is
+rotation(degree),H is
+height(mm), F is
+speed(mm/min)
+$n OK \n or $n Ex \n (refer to Err
+output)
+#n G2202 N0 V90\n Move the motor to the
+position ,N is ID of
+joints(0~3),V is angle(0~180)
+$n OK \n or $n Ex \n (refer to Err
+output)
+#n G2204 X10 Y10 Z10 F1000\n Relative displacement
+$n OK \n or $n Ex \n (refer to Err
+output)
+#n G2205 S10 R10 H10 F1000\n Polar coordinates for relative
+displacement
+$n OK \n or $n Ex \n (refer to Err
+output)
+Setting Command (parameters are in underline)
+#n M17\n Attach all the joint motors $n OK \n
+#n M2019\n Detach all the joint motors $n OK \n
+#n M2120 V0.2
+ Set time cycle of feedback,
+X154.714
+return Cartesian coordinates, V @3
+Z10.217\n
+is time(seconds)
+#n M2200
+ Check if uArm is moving $n OK V1\n (1 moving,0 stop)
+#n M2201 N0
+ attach motor, N is ID of
+joints(0~3) $n OK \n or $n Ex \n (refer to Err
+output)
+#n M2202 N0
+ Detach motor, N is ID of
+joints(0~3) $n OK \n or $n Ex \n (refer to Err
+output)
+#n M2203 N0
+ Check if the motor is attached,
+N is ID of joints(0~3) $n OK V1\n (1 attached,0
+detached)
+#n M2210 F1000 T200
+ buzzer,F is frequency, T is time
+(ms) $n OK \n or $n Ex \n (refer to Err
+output)
+
+Y194.915
+#n M2211 N0 A200 T1
+ Read EEPROM N(0~2,0 is internal EEPROM,1 is USR_E2PROM, 2 is SYS_E2PROM), A is address, T is type (1 char,2 int,4 float) $n OK V10\n
+#n M2212 N0 A200 T1 V10
+ Write EEPROM N(0~2,0 is internal
+EEPROM,1 is USR_E2PROM, 2 is
+SYS_E2PROM), A is address, T is
+type (1 char,2 int,4 float)V is the
+input data $n OK\n
+#n M2213 V0
+ Default function of base
+buttons (0 false, 1 true) $n OK\n
+#n M2220 X100 Y100 Z100
+ Convert coordinates to angle of
+joints #n M2221 B0 L50 R50\n Convert angle of joints to
+coordinates
+#n M2222 X100 Y100 Z100
+P0\n
+$n OK B50 L50 R50\n (B joint
+0,L joint 1,R joints 2, 0~180)
+$n OK X100 Y100 Z100\n
+Check if it can reach,P1 polar, $n OK V1\n (1 reachable, 0
+P0 Cartesian coordinates
+unreachable)
+#n M2231 V1\n pump V1 working, V0 stop $n OK \n or $n Ex \n (refer to Err
+output)
+#n M2232 V1\n gripper V1 close, V0 open $n OK \n or $n Ex \n (refer to Err
+output)
+#n M2234 V1\n Enable/disable Bluetooth
+(1:enable, 0:disable) $n OK\n
+#n M2240 N1 V1\n Set the digital IO output $n OK \n or $n Ex \n (refer to Err
+output)
+M2245 Vbtname\n Set the name of Bluetooth, 11
+letters limited (Do not add #n in OK \n
+this command)
+#n M2400 S0\n Set the mode of arm (0:Normal
+1:Laser 2:3D printing
+3:Universal holder) $n OK \n
+#n M2401\n Set the current position into the
+reference position $n OK \n
+#n M2410\n Set the height zero point $n OK \n
+#n M2411 S100\n Set the offset of end-effector
+(mm) $n OK \n
+Querying Command (parameters are in underline)
+#n P2200\n Get the current angle of joints $n OK B50 L50 R50\n
+#n P2201\n Get the device name $n OK V3.2\n
+#n P2202\n Get the hardware version $n OK V1.2\n
+#n P2203\n Get the software version $n OK V3.2\n
+#n P2204\n Get the API version $n OK V3.2\n
+#n P2205\n Get the UID $n OK V0123456789AB\n
+#n P2206 N0\n Get the angle of number 0 joint $n OK V80\n
+(0~2)
+#n P2220\n Get current coordinates $n OK X100 Y100 Z100\n
+#n P2221\n Get current polar coordinates $n OK S100 R90 H80\n
+#n P2231\n Get the status of pump $n OK V1\n (0 stop, 1 working, 2
+grabbing things)
+#n P2232\n Get the status of gripper $n OK V1\n (0 stop, 1 working, 2
+grabbing things)
+#n P2233\n Get the status of limited switch $n OK V1 (1 triggered, 0
+untriggered)
+#n P2234\n Get the status of power
+connection $n OK V1 (1 connected, 0
+unconnected)
+#n P2240 N1\n Get the status of digital IO $n OK V1\n (1 High, 0 Low)
+#n P2241 N1\n Get the status of analog IO $n OK V295\n (return the data of
+ADC)
+#n P2242\n Get the default value of
+AS5600 in each joint $n OK B2401 L344 R1048\n
+Ticking feedback
+@1 Ready
+@3 Timed feedback , ”M2120”
+@4 N0 V1\n Report the button event.
+N: 0 = Menu button, 1 = Play
+button
+V: 1 = Click, 2 = Long Press
+@5 V1\n Report event of power
+connection
+@6 N0 V1\n Report event of limit switch in
+end-effector
