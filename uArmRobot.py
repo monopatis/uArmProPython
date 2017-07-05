@@ -89,7 +89,16 @@ class robot:
         s = str(round(speed, 2))
         cmd = protocol.SET_POSITION.format(x,y,z,s)
         self.sendcmd(cmd, True)
-
+        
+    def goto_laser(self,x,y,z,speed):
+        self.moving = True
+        x = str(round(x, 2))
+        y = str(round(y, 2))
+        z = str(round(z, 2))
+        s = str(round(speed, 2))
+        cmd = protocol.SET_POSITION_LASER.format(x,y,z,s)
+        self.sendcmd(cmd, True)
+    
     def set_angle(self,n,r):
             self.moving = True
             n = str(int(n))
