@@ -23,6 +23,7 @@ ATTACH_SERVO            = "M2201 N{}"
 DETACH_SERVO            = "M2202 N{}"
 GET_COOR                = "P2220"
 GET_ANGLE               = "P2200"
+GET_ANGLE_OF_JOINT      = "P2206 N{}"
 
 GET_IS_MOVE             = "M2200"
 GET_TIP_SENSOR          = "P2233"
