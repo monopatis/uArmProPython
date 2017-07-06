@@ -1,5 +1,6 @@
 # uArm Swift Pro - Jenga builting
 # Created by: Monopatis Dimitrios - monopatis+git@gmail.com
+# Video can find here: https://www.youtube-nocookie.com/embed/DTmQRKxS4So?rel=0
 # V0.1 - July 2017 - Still under development
 
 import uArmRobot
